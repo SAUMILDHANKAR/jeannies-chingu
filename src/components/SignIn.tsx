@@ -60,20 +60,20 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export default function SignIn(props: { disableCustomTheme?: boolean }) {
+export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
-  const [open, setOpen] = React.useState(false);
+  //const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  //const handleClickOpen = () => {
+    //setOpen(true);
+  //};
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  //const handleClose = () => {
+    //setOpen(false);
+  //};
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     if (emailError || passwordError) {
@@ -192,7 +192,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
             <Link
               component="button"
               type="button"
-              onClick={handleClickOpen}
+              //onClick={handleClickOpen}
               variant="body2"
               sx={{ alignSelf: 'center' }}
             >
