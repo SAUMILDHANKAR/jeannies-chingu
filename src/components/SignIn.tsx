@@ -1,3 +1,4 @@
+// for solo project evaluation purposes by Chingu org, I want to note that the initial code in this file has been borrowed from a template on react.dev site, also leaving old code as comments for now until I go through all of it and refactor it
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -13,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
+
 //import ForgotPassword from './components/ForgotPassword';
 //import AppTheme from './theme/AppTheme';
 //import ColorModeSelect from './theme/ColorModeSelect';
