@@ -143,11 +143,11 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
     //{/* <AppTheme {...props}> */}
     <>    
       <CssBaseline enableColorScheme />
-	  <box>
+	  <stack>
 		  {credentials.map((credential) => (
 			<p key={credential.email}>{credential.email}</p>
 		  ))}
-	  </box>
+	  </stack>
       <SignInContainer direction="column" sx={{ justifyContent: 'space-between' }}>
         {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
         
