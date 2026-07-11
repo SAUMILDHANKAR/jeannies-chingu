@@ -14,11 +14,20 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
+import { createClient } from '@supabase/supabase-js'
+import { useEffect, useState } from 'react'
 
 //import ForgotPassword from './components/ForgotPassword';
 //import AppTheme from './theme/AppTheme';
 //import ColorModeSelect from './theme/ColorModeSelect';
 //import { GoogleIcon, FacebookIcon, SitemarkIcon } from './components/CustomIcons';
+
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+)
+
+
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -67,6 +76,20 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
+  /*https://supabase.com/docs/guides/getting-started/quickstarts/reactjs*/
+  /*database connection useState code borrowed from supabase template above*/
+  const [credentials, setCredentials] = useState([])
+  useEffect(() => {
+    getCredentials()
+  }, [])
+  async function getCredentials() {
+    const { data, error } = await supabase.from('readEmailSignInCredentials').select()
+    if (error) {
+      console.error(error)
+      return
+    }
+    setCredentials(data)
+  }
   //const [open, setOpen] = React.useState(false);
 
   //const handleClickOpen = () => {
@@ -120,6 +143,11 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
     //{/* <AppTheme {...props}> */}
     <>    
       <CssBaseline enableColorScheme />
+	  <box>
+		  {credentials.map((credential) => (
+			<p key={credential.email}>{credential.email}</p>
+		  ))}
+	  </box>
       <SignInContainer direction="column" sx={{ justifyContent: 'space-between' }}>
         {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
         
