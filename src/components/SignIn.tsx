@@ -121,10 +121,10 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
     <>    
       <CssBaseline enableColorScheme />
       <SignInContainer direction="column" sx={{ justifyContent: 'space-between' }}>
-        //{/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
+        {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
         
         <Card variant="outlined">
-          //{/* <SitemarkIcon /> */}
+          {/* <SitemarkIcon /> */}
           <Typography
             component="h1"
             variant="h4"
@@ -181,7 +181,7 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            //{/* <ForgotPassword open={open} handleClose={handleClose} /> */}
+            {/* <ForgotPassword open={open} handleClose={handleClose} /> */}
             
             <Button
               type="submit"
@@ -194,7 +194,7 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
             <Link
               component="button"
               type="button"
-              //onClick={handleClickOpen}
+              /*onClick={handleClickOpen}*/
               variant="body2"
               sx={{ alignSelf: 'center' }}
             >
@@ -234,7 +234,7 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
           </Box>
         </Card>
       </SignInContainer>
-    //{/* </AppTheme> */}
+    {/* </AppTheme> */}
     
     </ >
   );
