@@ -78,7 +78,12 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   /*https://supabase.com/docs/guides/getting-started/quickstarts/reactjs*/
   /*database connection useState code borrowed from supabase template above*/
-  const [credentials, setCredentials] = useState(string["null"])
+  /*evaluators: I could not add type interface reading docs so borrowed from chatgpt*/
+  interface Credential {
+	email: string;
+  }
+  
+  const [credentials, setCredentials] = useState<Credential[]>([]);
   useEffect(() => {
     getCredentials()
   }, [])
@@ -143,11 +148,11 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
     //{/* <AppTheme {...props}> */}
     <>    
       <CssBaseline enableColorScheme />
-	  <stack>
+	  <Stack>
 		  {credentials.map((credential) => (
 			<p key={credential.email}>{credential.email}</p>
 		  ))}
-	  </stack>
+	  </Stack>
       <SignInContainer direction="column" sx={{ justifyContent: 'space-between' }}>
         {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
         
