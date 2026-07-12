@@ -78,7 +78,7 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   /*https://supabase.com/docs/guides/getting-started/quickstarts/reactjs*/
   /*database connection useState code borrowed from supabase template above*/
-  const [credentials, setCredentials] = useState([])
+  const [credentials, setCredentials] = useState(string[])
   useEffect(() => {
     getCredentials()
   }, [])
