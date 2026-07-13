@@ -16,6 +16,8 @@ import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import { createClient } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
+
 
 //import ForgotPassword from './components/ForgotPassword';
 //import AppTheme from './theme/AppTheme';
@@ -27,7 +29,12 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 )
 
-
+const navItems = [
+    {
+      path: '/dashboard',
+      label: 'Dashboard',
+    },
+  ];
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -148,6 +155,92 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
     //{/* <AppTheme {...props}> */}
     <>    
       <CssBaseline enableColorScheme />
+	  <Box sx={{ flex: 1 }}>
+        {navItems.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            style={{ textDecoration: 'none' }}
+          >
+            {({ isActive }) => (
+              <Box
+                sx={{
+                  mx: 1,
+                  mb: 1,
+                  height: 54,
+                  borderRadius: 3,
+                  display: 'flex',
+                  alignItems: 'center',
+                  
+                  
+                  color: isActive ? '#2563EB' : '#64748B',
+                  backgroundColor: isActive
+                    ? '#EEF4FF'
+                    : 'transparent',
+                  transition: '.2s',
+                  cursor: 'pointer',
+
+                  '&:hover': {
+                    backgroundColor: '#F5F8FF',
+                    color: '#2563EB',
+                  },
+                }}
+              >
+                {item.icon}
+
+                {(
+                  <Typography
+                    sx={{
+                      ml: 2,
+                      fontWeight: isActive ? 600 : 500,
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {item.label}
+                  </Typography>
+                )}
+              </Box>
+            )}
+          </NavLink>
+        ))}
+      </Box>
+	  
+	  {/* Profile */}
+      <NavLink
+        to="/dashboard"
+        
+      >
+        {({ isActive }) => (
+          <Box
+            sx={{
+              mx: 1,
+              height: 54,
+              borderRadius: 3,
+              display: 'flex',
+              alignItems: 'center',
+              
+              
+              color: '#2563EB',
+              backgroundColor: isActive
+                ? '#82B1FF80'
+                : '#EEF4FF',
+
+              '&:hover': {
+                backgroundColor: '#DDEBFF',
+              },
+            }}
+          >
+            
+
+            {(
+              <Typography sx={{ ml: 2 }}>
+                Dashboard
+              </Typography>
+            )}
+          </Box>
+        )}
+      </NavLink>
+	  
 	  <Stack>
 		  {credentials.map((credential) => (
 			<p key={credential.email}>{credential.email}</p>

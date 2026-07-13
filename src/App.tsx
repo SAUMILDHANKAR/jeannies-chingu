@@ -3,30 +3,33 @@ import { useState } from 'react'
 //import viteLogo from '/vite.svg'
 import './App.css'
 import SignIn from './components/SignIn'
+import { Suspense, lazy } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Box } from '@mui/material';
+
+const Dashboard = lazy(() => import("@/pages/Dashboard"));
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
-      <div>
-        <p>
-          Welcome to the application
-        </p>
-      </div>
+      
       <h1>Jeannie's chingu</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      
+        
         <SignIn />
-        <p>
-          Upcoming form component.
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Thanks for visiting the site
-      </p>
+      
+	  <Box>
+	    <Suspense>
+		<Routes>
+	  {/* Dashboard */}
+	      <Route path="/Dashboard" element={<Dashboard />} />
+
+	    </Routes>
+	  </Suspense>
+	</Box>	
     </>
   )
 }
