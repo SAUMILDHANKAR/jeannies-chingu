@@ -186,7 +186,7 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
                   },
                 }}
               >
-                {item.icon}
+                {/*item.icon*/}
 
                 {(
                   <Typography

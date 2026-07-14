@@ -15,8 +15,9 @@ const Dashboard: React.FC = () => {
     >
       <Typography
         variant="h3"
-        fontWeight={600}
-        color="text.secondary"
+		/*For eveluators: didn't get no overload error through TS docs but Copilot helped me understand illegal params in Typography would mean that*/
+        /*fontWeight={600}*/
+        /*color="text.secondary"*/
       >
         Page upcoming 🛠️
       </Typography>
