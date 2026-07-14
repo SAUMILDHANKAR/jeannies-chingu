@@ -24,7 +24,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+	/* For evaluators: I could not figure out import path GitHub CI error, thought it was TS builtin but MS Copilot helped me add node types */
+	"types": ["node"]
   },
   "include": ["src"]
 }
