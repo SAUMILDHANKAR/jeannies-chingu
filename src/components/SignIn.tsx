@@ -16,7 +16,6 @@ import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import { createClient } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
 
 
 //import ForgotPassword from './components/ForgotPassword';
