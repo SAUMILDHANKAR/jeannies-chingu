@@ -1,6 +1,9 @@
 // for solo project evaluation purposes by Chingu org, I want to note that the initial code in this file has been borrowed from a template on react.dev site, also leaving old code as comments for now until I go through all of it and refactor it
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -30,47 +33,7 @@ const supabase = createClient(
 
 
 
-const Card = styled(MuiCard)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignSelf: 'center',
-  width: '100%',
-  padding: theme.spacing(4),
-  gap: theme.spacing(2),
-  margin: 'auto',
-  [theme.breakpoints.up('sm')]: {
-    maxWidth: '450px',
-  },
-  boxShadow:
-    'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
-  ...theme.applyStyles('dark', {
-    boxShadow:
-      'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
-  }),
-}));
 
-const SignInContainer = styled(Stack)(({ theme }) => ({
-  height: 'calc((1 - var(--template-frame-height, 0)) * 100dvh)',
-  minHeight: '100%',
-  padding: theme.spacing(2),
-  [theme.breakpoints.up('sm')]: {
-    padding: theme.spacing(4),
-  },
-  '&::before': {
-    content: '""',
-    display: 'block',
-    position: 'absolute',
-    zIndex: -1,
-    inset: 0,
-    backgroundImage:
-      'radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))',
-    backgroundRepeat: 'no-repeat',
-    ...theme.applyStyles('dark', {
-      backgroundImage:
-        'radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))',
-    }),
-  },
-}));
 
 export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
   const [emailError, setEmailError] = React.useState(false);
@@ -82,6 +45,7 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
   /*evaluators: I could not add type interface reading docs so borrowed from chatgpt*/
   interface Credential {
 	email: string;
+	password: string;
   }
   
   const [credentials, setCredentials] = useState<Credential[]>([]);
@@ -147,28 +111,51 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
 
   return (
     //{/* <AppTheme {...props}> */}
-    <>    
-      <CssBaseline enableColorScheme />
+    <>
+	<Box
+      sx={{
+        bgcolor: "lightpink",       // background color for the whole viewport
+        minHeight: "100vh",         // full viewport height
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        p: "5%",                    // 5% padding around the content
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          width: "100%",
+          height: "100%",
+          p: 4,
+          bgcolor: "white",         // card background
+        }}
+      >
+	<Container
+	  alignSelf="center"
+	  sx={{ 
+		  bgcolor: 'white'
+		}}
+	>
+      
 	  
 	  
 	  
-	  <Stack>
-		  {credentials.map((credential) => (
-			<p key={credential.email}>{credential.email}</p>
-		  ))}
-	  </Stack>
-      <SignInContainer direction="column" sx={{ justifyContent: 'space-between' }}>
+	  
+      <Container 
+	    direction="column"
+		alignSelf="center"
+		sx={{ 
+		  justifyContent: 'space-between',
+		  bgcolor: 'white',
+		  width: '100%'
+		}}
+	  >
         {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
         
-        <Card variant="outlined">
+        <Card variant="outlined" width="100%" alignSelf="center">
           {/* <SitemarkIcon /> */}
-          <Typography
-            component="h1"
-            variant="h4"
-            sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
-          >
-            Sign in
-          </Typography>
+          
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -180,25 +167,10 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
               gap: 2,
             }}
           >
+            
+              
             <FormControl>
-              <FormLabel htmlFor="email">Email</FormLabel>
-              <TextField
-                error={emailError}
-                helperText={emailErrorMessage}
-                id="email"
-                type="email"
-                name="email"
-                placeholder="your@email.com"
-                autoComplete="email"
-                autoFocus
-                required
-                fullWidth
-                variant="outlined"
-                color={emailError ? 'error' : 'primary'}
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel htmlFor="password">Passcode</FormLabel>
               <TextField
                 error={passwordError}
                 helperText={passwordErrorMessage}
@@ -236,9 +208,14 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
               variant="body2"
               sx={{ alignSelf: 'center' }}
             >
-              Forgot your password?
+              Forgot your passcode?
             </Link>
           </Box>
+		  <Stack>
+		  {credentials.map((credential) => (
+			<p key={credential.password}>{credential.password}</p>
+		  ))}
+		  </Stack>
           <Divider>or</Divider>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Button
@@ -271,9 +248,11 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
             </Typography>
           </Box>
         </Card>
-      </SignInContainer>
+      </Container>
     {/* </AppTheme> */}
-    
+    </Container>
+	</Paper>
+    </Box>
     </ >
   );
 }
