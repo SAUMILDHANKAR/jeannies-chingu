@@ -1,7 +1,16 @@
+/* Unfortunately I couldn't internet search how to change the background color of my card and so used copilot to foigure that out after many hours */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  /*margin: 0;*/
+  background-color: lightpink; 
+}
+
+
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0 0;
+  /*padding: 2rem;*/
   text-align: center;
 }
 
