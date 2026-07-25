@@ -1,5 +1,5 @@
 /* For evaluators, Component borrowed from the following site => Attribution: https://dev.to/keyurparalkar/create-a-passcode-component-from-scratch-in-react-4l88 */
-import { useEffect, useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 /* For evaluators, even after a few hours of doc search, I could not build navigation so used copilot again */
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ export default function Passcode() {
   const inputRefs = useRef<Array<HTMLInputElement> | []>([]);
   const navigate = useNavigate();
 
-  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
   const keyCode = e.key;
         if (!(keyCode >= 0 && keyCode <= 9)) {
           e.preventDefault();
