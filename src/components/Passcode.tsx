@@ -16,13 +16,13 @@ export default function Passcode() {
   const navigate = useNavigate();
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  const keyCode = e.key;
+  const keyCode: (any) = e.key;
         if (!(keyCode >= 0 && keyCode <= 9)) {
           e.preventDefault();
         }
       };
 
-  const onChange = (e: BaseSyntheticEvent, index: number) => {
+  const onChange = (e: any, index: number) => {
     setArrayValue((preValue: (string | number)[]) => {
       const newArray = [...preValue];
 
@@ -36,7 +36,7 @@ export default function Passcode() {
     });
   };
 
-  const onKeyUp = (e: KeyboardEvent<HTMLInputElement>, index: number) => {
+  const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     if (parseInt(e.key) && index <= arrayValue.length - 2) {
       setCurrentFocusedIndex(index + 1);
       if (inputRefs && inputRefs.current && index === currentFocusedIndex) {
@@ -45,7 +45,7 @@ export default function Passcode() {
     }
   };
 
-  const onFocus = (e: BaseSyntheticEvent, index: number) => {
+  const onFocus = (e: any, index: number) => {
     setCurrentFocusedIndex(index);
     e.target.focus();
   };
@@ -84,13 +84,13 @@ export default function Passcode() {
 			  navigate("/Dashboard");
 			}
 		  }}
-		  href="/Dashboard"
+		  //href="/Dashboard"
 		  
         />
       ))}
 	  {<p>Your input is {arrayValue}.</p>}
 	  <div>Help</div>
-	  {arrayValue=="2222" && <a href="/Dashboard"></a>}
+	  
     </>
   );
 };

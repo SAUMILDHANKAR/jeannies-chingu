@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
-import CssBaseline from '@mui/material/CssBaseline';
+//import CssBaseline from '@mui/material/CssBaseline';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Divider from '@mui/material/Divider';
 import FormLabel from '@mui/material/FormLabel';
@@ -15,8 +15,8 @@ import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import MuiCard from '@mui/material/Card';
-import { styled } from '@mui/material/styles';
+//import MuiCard from '@mui/material/Card';
+//import { styled } from '@mui/material/styles';
 import { createClient } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
 
@@ -36,8 +36,8 @@ const supabase = createClient(
 
 
 export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
-  const [emailError, setEmailError] = React.useState(false);
-  const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
+  //const [emailError, setEmailError] = React.useState(false);
+  //const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   /*https://supabase.com/docs/guides/getting-started/quickstarts/reactjs*/
@@ -71,7 +71,7 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
   //};
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (emailError || passwordError) {
+    if (passwordError) {
       event.preventDefault();
       return;
     }
@@ -83,19 +83,19 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
   };
 
   const validateInputs = () => {
-    const email = document.getElementById('email') as HTMLInputElement;
+    //const email = document.getElementById('email') as HTMLInputElement;
     const password = document.getElementById('password') as HTMLInputElement;
 
     let isValid = true;
 
-    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-      setEmailError(true);
-      setEmailErrorMessage('Please enter a valid email address.');
-      isValid = false;
-    } else {
-      setEmailError(false);
-      setEmailErrorMessage('');
-    }
+    //if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+      //setEmailError(true);
+      //setEmailErrorMessage('Please enter a valid email address.');
+      //isValid = false;
+    //} else {
+      //setEmailError(false);
+      //setEmailErrorMessage('');
+    //}
 
     if (!password.value || password.value.length < 6) {
       setPasswordError(true);
@@ -131,29 +131,16 @@ export default function SignIn(/*props: { disableCustomTheme?: boolean }*/) {
           bgcolor: "white",         // card background
         }}
       >
-	<Container
-	  alignSelf="center"
-	  sx={{ 
-		  bgcolor: 'white'
-		}}
-	>
+	<Container>
       
 	  
 	  
 	  
 	  
-      <Container 
-	    direction="column"
-		alignSelf="center"
-		sx={{ 
-		  justifyContent: 'space-between',
-		  bgcolor: 'white',
-		  width: '100%'
-		}}
-	  >
+      <Container>
         {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
         
-        <Card variant="outlined" width="100%" alignSelf="center">
+        <Card>
           {/* <SitemarkIcon /> */}
           
           <Box
