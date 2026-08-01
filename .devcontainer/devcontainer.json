@@ -1,0 +1,8 @@
+{
+  "name": "jeannies-chingu",
+  "dockerComposeFile": [
+    "../.docker/docker-compose.yml"
+  ],
+  "service": "jeannies-chingu",
+  "workspaceFolder": "/app"
+}

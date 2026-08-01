@@ -1,0 +1,14 @@
+services:
+  jeannies-chingu:
+    container_name: jeannies-chingu
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - type: bind
+        source: ..
+        target: /app
+      - /app/node_modules
+    command: sleep infinity
